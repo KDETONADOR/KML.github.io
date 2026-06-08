@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Debora & Kaique</title>
 
   <style>
@@ -118,6 +117,8 @@
         0 3px 0 #d1dfc7,
         0 9px 18px rgba(47,60,43,0.18);
     }
+
+    /* TELA DE ABERTURA */
 
     .opening-screen {
       position: fixed;
@@ -566,6 +567,8 @@
       transform: translate(-50%, -50%) scale(0.70) rotate(-8deg);
     }
 
+    /* SITE ABERTO */
+
     .site-content {
       position: relative;
       isolation: isolate;
@@ -589,19 +592,19 @@
       pointer-events: none;
 
       background:
-        linear-gradient(rgba(248, 251, 246, 0.34), rgba(235, 242, 231, 0.44)),
-        url('./wallpaper-open-site.png') center center / 100% 100% no-repeat;
+        linear-gradient(rgba(248, 251, 246, 0.46), rgba(235, 242, 231, 0.56)),
+        url('./wallpaper-open-site.png') center center / cover no-repeat;
 
       background-color: #eef5ea;
 
       opacity: 0;
-      transform: scale(1.01);
+      transform: scale(1.02);
       transition: opacity 1.2s ease, transform 1.6s ease;
       filter: saturate(1.02);
     }
 
     .site-content.show .opened-wallpaper {
-      opacity: 0.92;
+      opacity: 0.86;
       transform: scale(1);
     }
 
@@ -911,6 +914,31 @@
       font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
+    }
+
+    /* CELULAR: NÃO ESTICA A IMAGEM.
+       Usa a imagem em camadas nos 4 cantos para manter as flores visíveis. */
+
+    @media (max-width: 700px) {
+      .opened-wallpaper {
+        background:
+          linear-gradient(rgba(248, 251, 246, 0.40), rgba(235, 242, 231, 0.52)),
+
+          url('./wallpaper-open-site.png') top left / 220% auto no-repeat,
+          url('./wallpaper-open-site.png') top right / 220% auto no-repeat,
+          url('./wallpaper-open-site.png') bottom left / 220% auto no-repeat,
+          url('./wallpaper-open-site.png') bottom right / 220% auto no-repeat,
+
+          linear-gradient(180deg, #f7fbf4 0%, #e3ecde 100%);
+
+        opacity: 0;
+        transform: scale(1.01);
+      }
+
+      .site-content.show .opened-wallpaper {
+        opacity: 0.92;
+        transform: scale(1);
+      }
     }
 
     @media (max-width: 600px) {
