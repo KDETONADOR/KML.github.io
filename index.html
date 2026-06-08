@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Debora & Kaique</title>
 
   <style>
@@ -15,32 +16,36 @@
     }
 
     :root {
-      --bg-1: #fbf5f7;
-      --bg-2: #f1dfe4;
+      --bg-1: #fff8fa;
+      --bg-2: #f2dfe5;
 
-      --pink-1: #f8e6ea;
-      --pink-2: #edccd4;
-      --pink-3: #ddb4bf;
-      --pink-4: #be8f9c;
+      --pink-1: #fae8ec;
+      --pink-2: #edced5;
+      --pink-3: #ddb6c0;
+      --pink-4: #b98593;
 
-      --paper-1: #fffafa;
-      --paper-2: #f9eef0;
-      --paper-3: #eed9de;
+      --paper-1: #fffdfd;
+      --paper-2: #f9eef1;
+      --paper-3: #ecd8dd;
 
-      --ink: #6a4d54;
-      --ink-soft: #9d7d85;
+      --ink: #674c54;
+      --ink-soft: #9b7b84;
 
       --shadow-soft: rgba(92, 53, 64, 0.08);
       --shadow-mid: rgba(92, 53, 64, 0.15);
-      --shadow-strong: rgba(76, 40, 52, 0.22);
+      --shadow-strong: rgba(76, 40, 52, 0.24);
 
       --thread-1: #fffdfd;
-      --thread-2: #ede2e5;
+      --thread-2: #ece0e4;
       --thread-3: #d8c6cc;
 
-      --wax-1: #cf96a0;
-      --wax-2: #af6f7b;
-      --wax-3: #874a58;
+      --wax-1: #d29aa4;
+      --wax-2: #ad6b78;
+      --wax-3: #7b4050;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -48,15 +53,19 @@
       color: var(--ink);
       overflow-x: hidden;
       background:
-        radial-gradient(circle at top, rgba(255,255,255,0.75), transparent 28%),
+        radial-gradient(circle at top, rgba(255,255,255,0.8), transparent 28%),
         linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
     }
 
-    /* ========= TEXTURAS ========= */
+    body.locked {
+      overflow: hidden;
+    }
+
+    /* TEXTURAS */
 
     .paper-surface {
       background:
-        linear-gradient(140deg, rgba(255,255,255,0.60), rgba(160, 92, 108, 0.035)),
+        linear-gradient(140deg, rgba(255,255,255,0.62), rgba(160, 92, 108, 0.035)),
         repeating-linear-gradient(
           45deg,
           rgba(255,255,255,0.24) 0px,
@@ -111,7 +120,7 @@
       background-blend-mode: soft-light, overlay, multiply, soft-light, normal;
     }
 
-    /* ========= ABERTURA ========= */
+    /* ABERTURA */
 
     .opening-screen {
       position: fixed;
@@ -122,21 +131,22 @@
       justify-content: center;
       padding: 24px;
       background:
-        radial-gradient(circle at top, rgba(255,255,255,0.82), transparent 35%),
-        linear-gradient(180deg, #fff7f8 0%, #efdce1 100%);
+        radial-gradient(circle at top, rgba(255,255,255,0.85), transparent 35%),
+        linear-gradient(180deg, #fff8fa 0%, #efdce2 100%);
       transition: opacity 1s ease, visibility 1s ease;
     }
 
     .opening-screen.hidden {
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
     }
 
     .opening-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       perspective: 1600px;
     }
 
@@ -190,11 +200,11 @@
     }
 
     .tap-hint {
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #9e7b84;
-      opacity: 0.88;
+      color: #a98891;
+      opacity: 0.72;
       transition: opacity 0.35s ease;
     }
 
@@ -202,7 +212,7 @@
       opacity: 0;
     }
 
-    /* conteúdo interno */
+    /* CONVITE INTERNO DA ABERTURA */
 
     .invite-inside {
       position: absolute;
@@ -248,10 +258,18 @@
       text-align: center;
       color: var(--ink);
       max-width: 85%;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.9s ease 0.4s, transform 0.9s ease 0.4s;
+    }
+
+    .opening-card.open .inside-content {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .inside-eyebrow {
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--ink-soft);
@@ -273,7 +291,7 @@
       color: var(--ink-soft);
     }
 
-    /* capa */
+    /* CAPA */
 
     .cover {
       position: absolute;
@@ -313,7 +331,7 @@
       filter: drop-shadow(0 12px 18px rgba(70,40,48,0.10));
     }
 
-    /* barbante */
+    /* BARBANTE */
 
     .twine {
       position: absolute;
@@ -384,7 +402,7 @@
       transform: translateX(-50%) rotate(-24deg);
     }
 
-    /* selo */
+    /* SELO */
 
     .seal {
       position: absolute;
@@ -433,12 +451,17 @@
       filter: blur(1px);
     }
 
-    .seal .seal-text {
+    .seal-text {
       position: relative;
+      color: transparent;
+      background: linear-gradient(180deg, #ffe9ef, #8f4f5e);
+      -webkit-background-clip: text;
+      background-clip: text;
       text-shadow:
-        0 1px 0 rgba(255,255,255,0.08),
-        0 -1px 0 rgba(80,40,50,0.18);
+        0 1px 0 rgba(255,255,255,0.12),
+        0 -1px 1px rgba(80,40,50,0.28);
       transform: translateY(-1px);
+      filter: drop-shadow(0 1px 1px rgba(60,30,40,0.20));
     }
 
     .opening-card:hover .seal {
@@ -450,17 +473,20 @@
       transform: translate(-50%, -50%) scale(0.84);
     }
 
-    /* ========= SITE ========= */
+    /* SITE */
 
     .site-content {
       opacity: 0;
       transform: translateY(28px);
-      transition: opacity 1.2s ease, transform 1.2s ease;
+      visibility: hidden;
+      transition: opacity 1.2s ease, transform 1.2s ease, visibility 0s linear 1.2s;
     }
 
     .site-content.show {
       opacity: 1;
       transform: translateY(0);
+      visibility: visible;
+      transition: opacity 1.2s ease, transform 1.2s ease;
     }
 
     .hero {
@@ -504,11 +530,11 @@
       position: relative;
       z-index: 2;
       width: min(780px, 100%);
-      padding: 58px 32px;
+      padding: 64px 32px;
       text-align: center;
       color: var(--ink);
-      background: rgba(255,255,255,0.52);
-      border: 1px solid rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.68);
       box-shadow:
         0 24px 60px rgba(95,55,65,0.08),
         inset 0 0 40px rgba(255,255,255,0.16);
@@ -516,35 +542,26 @@
     }
 
     .hero-card .mini {
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      opacity: 0.78;
-      margin-bottom: 16px;
+      opacity: 0.72;
+      margin-bottom: 18px;
     }
 
     .hero-card h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.3rem, 9vw, 6rem);
+      font-size: clamp(3.8rem, 10vw, 6.4rem);
       font-weight: 400;
-      line-height: 1.04;
-      margin-bottom: 12px;
+      line-height: 1.02;
+      margin-bottom: 16px;
     }
 
     .hero-date {
       font-size: 12px;
       letter-spacing: 5px;
       text-transform: uppercase;
-      opacity: 0.84;
-      margin-bottom: 28px;
-    }
-
-    .hero-text {
-      max-width: 580px;
-      margin: 0 auto;
-      line-height: 1.95;
-      font-size: 0.98rem;
-      opacity: 0.92;
+      opacity: 0.82;
     }
 
     section {
@@ -674,12 +691,17 @@
 
       .hero-card,
       .section-card {
-        padding: 36px 22px;
+        padding: 38px 22px;
+      }
+
+      .hero-card h1 {
+        font-size: clamp(3.4rem, 15vw, 4.8rem);
       }
     }
   </style>
 </head>
-<body>
+
+<body class="locked">
 
   <!-- Abertura -->
   <div class="opening-screen" id="openingScreen">
@@ -697,7 +719,7 @@
           </div>
         </div>
 
-        <!-- Capa -->
+        <!-- Capa fechada -->
         <div class="cover cover-surface">
           <div class="twine horizontal"></div>
           <div class="twine vertical"></div>
@@ -711,7 +733,7 @@
 
       </div>
 
-      <div class="tap-hint">toque para abrir</div>
+      <div class="tap-hint">toque no lacre para abrir</div>
     </div>
   </div>
 
@@ -723,11 +745,6 @@
         <div class="mini">Convite de casamento</div>
         <h1>Debora & Kaique</h1>
         <div class="hero-date">20 Outubro 2027</div>
-
-        <p class="hero-text">
-          Com alegria, convidamos você para celebrar conosco este momento tão especial.
-          Esperamos compartilhar esse dia inesquecível ao lado das pessoas que amamos.
-        </p>
       </div>
     </section>
 
@@ -792,6 +809,7 @@
   </main>
 
   <script>
+    const body = document.body;
     const openingCard = document.getElementById("openingCard");
     const openingScreen = document.getElementById("openingScreen");
     const siteContent = document.getElementById("siteContent");
@@ -804,8 +822,10 @@
       setTimeout(() => {
         openingScreen.classList.add("hidden");
         siteContent.classList.add("show");
-      }, 1900);
+        body.classList.remove("locked");
+      }, 1950);
     });
   </script>
+
 </body>
 </html>
