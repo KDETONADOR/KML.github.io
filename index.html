@@ -16,8 +16,8 @@
     }
 
     :root {
-      --bg-1: #fff8fa;
-      --bg-2: #f0dce2;
+      --bg-1: #fff9fa;
+      --bg-2: #f2dfe5;
 
       --pink-1: #fae8ec;
       --pink-2: #edced5;
@@ -30,14 +30,12 @@
       --ink: #674c54;
       --ink-soft: #9b7b84;
 
-      --shadow-strong: rgba(76, 40, 52, 0.24);
-
       --thread-1: #fffdfd;
       --thread-2: #ece0e4;
 
-      --wax-1: #d29aa4;
-      --wax-2: #ad6b78;
-      --wax-3: #7b4050;
+      --wax-1: #d49ca6;
+      --wax-2: #aa6674;
+      --wax-3: #773d4d;
     }
 
     html {
@@ -86,11 +84,11 @@
 
     .cover-surface {
       background:
-        linear-gradient(145deg, rgba(255,255,255,0.40), rgba(145,80,95,0.06)),
+        linear-gradient(145deg, rgba(255,255,255,0.42), rgba(145,80,95,0.06)),
         repeating-linear-gradient(
           45deg,
-          rgba(255,255,255,0.17) 0px,
-          rgba(255,255,255,0.17) 1px,
+          rgba(255,255,255,0.16) 0px,
+          rgba(255,255,255,0.16) 1px,
           transparent 1px,
           transparent 9px
         ),
@@ -115,6 +113,8 @@
       background-blend-mode: soft-light, overlay, multiply, soft-light, normal;
     }
 
+    /* ABERTURA */
+
     .opening-screen {
       position: fixed;
       inset: 0;
@@ -124,8 +124,15 @@
       justify-content: center;
       padding: 24px;
       background:
-        radial-gradient(ellipse at center, rgba(255,255,255,0.82) 0%, rgba(255,248,250,0.75) 28%, transparent 58%),
-        radial-gradient(ellipse at 50% 75%, rgba(105,65,78,0.10), transparent 42%),
+        radial-gradient(ellipse at center, rgba(255,255,255,0.86) 0%, rgba(255,248,250,0.78) 30%, transparent 58%),
+        radial-gradient(ellipse at 50% 75%, rgba(105,65,78,0.12), transparent 44%),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.16) 0px,
+          rgba(255,255,255,0.16) 1px,
+          transparent 1px,
+          transparent 12px
+        ),
         linear-gradient(180deg, #fff9fa 0%, #efdce2 100%);
       transition: opacity 1s ease, visibility 1s ease;
     }
@@ -178,7 +185,7 @@
       position: absolute;
       inset: auto 18px 7px 18px;
       height: 22px;
-      background: rgba(66, 40, 48, 0.15);
+      background: rgba(66, 40, 48, 0.16);
       filter: blur(18px);
       border-radius: 50%;
       z-index: 0;
@@ -205,6 +212,8 @@
     .opening-card.open + .tap-hint {
       opacity: 0;
     }
+
+    /* INTERIOR DO CONVITE */
 
     .invite-inside {
       position: absolute;
@@ -251,13 +260,13 @@
       color: var(--ink);
       max-width: 85%;
       opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.9s ease 0.4s, transform 0.9s ease 0.4s;
+      transform: translateY(12px) scale(0.985);
+      transition: opacity 0.9s ease 0.8s, transform 0.9s ease 0.8s;
     }
 
     .opening-card.open .inside-content {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
     .inside-eyebrow {
@@ -283,6 +292,8 @@
       color: var(--ink-soft);
     }
 
+    /* CAPA */
+
     .cover {
       position: absolute;
       inset: 0;
@@ -290,7 +301,7 @@
       overflow: hidden;
       transform-origin: center bottom;
       transition:
-        transform 1.55s cubic-bezier(.77,0,.18,1),
+        transform 1.55s cubic-bezier(.77,0,.18,1) 0.65s,
         opacity 0.8s ease,
         filter 1.2s ease;
       will-change: transform;
@@ -321,6 +332,8 @@
       filter: drop-shadow(0 12px 18px rgba(70,40,48,0.10));
     }
 
+    /* BARBANTE */
+
     .twine {
       position: absolute;
       z-index: 4;
@@ -337,6 +350,7 @@
       box-shadow:
         0 0 0 1px rgba(130,80,90,0.04),
         0 2px 6px rgba(95,55,65,0.16);
+      transition: opacity 0.45s ease 0.35s, transform 0.55s ease 0.35s;
     }
 
     .twine.horizontal {
@@ -390,6 +404,28 @@
       transform: translateX(-50%) rotate(-24deg);
     }
 
+    .opening-card.open .twine {
+      opacity: 0;
+    }
+
+    .opening-card.open .twine.horizontal {
+      transform: translateY(-50%) scaleX(0.72);
+    }
+
+    .opening-card.open .twine.vertical {
+      transform: translateX(-50%) scaleY(0.72);
+    }
+
+    .opening-card.open .twine.diag-left {
+      transform: translateX(-50%) rotate(24deg) scaleY(0.72);
+    }
+
+    .opening-card.open .twine.diag-right {
+      transform: translateX(-50%) rotate(-24deg) scaleY(0.72);
+    }
+
+    /* LACRE */
+
     .seal {
       position: absolute;
       top: 50%;
@@ -412,7 +448,7 @@
       font-size: 31px;
       font-weight: 700;
       letter-spacing: 1px;
-      transition: transform 0.35s ease, opacity 0.35s ease;
+      transition: transform 0.45s ease, opacity 0.45s ease;
     }
 
     .seal::before {
@@ -453,8 +489,10 @@
 
     .opening-card.open .seal {
       opacity: 0;
-      transform: translate(-50%, -50%) scale(0.84);
+      transform: translate(-50%, -50%) scale(0.70) rotate(-8deg);
     }
+
+    /* SITE */
 
     .site-content {
       opacity: 0;
@@ -591,6 +629,7 @@
       font-weight: 400;
       color: #6b4f55;
       margin-bottom: 16px;
+      text-align: center;
     }
 
     .section-text {
@@ -601,6 +640,7 @@
       font-size: 0.98rem;
       line-height: 1.95;
       color: #755f65;
+      text-align: center;
     }
 
     .date-box {
@@ -610,6 +650,7 @@
       margin: 28px auto 0;
       padding-top: 18px;
       border-top: 1px solid rgba(130,80,90,0.14);
+      text-align: center;
     }
 
     .date-box .big {
@@ -657,6 +698,34 @@
       box-shadow: 0 12px 24px rgba(95,55,65,0.10);
     }
 
+    .floating-rsvp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 50;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #6b4f55;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(130,80,90,0.14);
+      box-shadow: 0 10px 28px rgba(95,55,65,0.10);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .site-content.show .floating-rsvp {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
     footer {
       padding: 26px 20px 40px;
       text-align: center;
@@ -691,11 +760,27 @@
       .hero-card h1 {
         font-size: clamp(3.3rem, 15vw, 4.7rem);
       }
+
+      .floating-rsvp {
+        right: 50%;
+        transform: translate(50%, 12px);
+        bottom: 14px;
+      }
+
+      .site-content.show .floating-rsvp {
+        transform: translate(50%, 0);
+      }
     }
   </style>
 </head>
 
 <body class="locked">
+
+  <!-- Música opcional:
+  Para ativar depois, coloque um arquivo mp3 no GitHub e troque o src abaixo.
+  Exemplo: <audio id="weddingMusic" src="music.mp3" loop></audio>
+  -->
+  <audio id="weddingMusic" src="" loop></audio>
 
   <div class="opening-screen" id="openingScreen">
     <div class="opening-wrap">
@@ -730,6 +815,10 @@
 
   <main class="site-content" id="siteContent">
 
+    <a class="floating-rsvp" href="https://forms.google.com" target="_blank">
+      Confirmar presença
+    </a>
+
     <section class="hero">
       <div class="hero-card">
         <div class="mini">Convite de casamento</div>
@@ -762,9 +851,11 @@
           Endereço completo aqui
         </p>
 
-        <a class="button" href="https://maps.google.com" target="_blank">
-          Ver localização
-        </a>
+        <p style="text-align: center;">
+          <a class="button" href="https://maps.google.com" target="_blank">
+            Ver localização
+          </a>
+        </p>
       </div>
     </section>
 
@@ -776,9 +867,11 @@
           Pedimos, por gentileza, que confirme sua presença até a data combinada.
         </p>
 
-        <a class="button" href="https://forms.google.com" target="_blank">
-          Confirmar presença
-        </a>
+        <p style="text-align: center;">
+          <a class="button" href="https://forms.google.com" target="_blank">
+            Confirmar presença
+          </a>
+        </p>
       </div>
     </section>
 
@@ -803,17 +896,23 @@
     const openingCard = document.getElementById("openingCard");
     const openingScreen = document.getElementById("openingScreen");
     const siteContent = document.getElementById("siteContent");
+    const music = document.getElementById("weddingMusic");
 
     openingCard.addEventListener("click", () => {
       if (openingCard.classList.contains("open")) return;
 
       openingCard.classList.add("open");
 
+      if (music && music.getAttribute("src")) {
+        music.volume = 0.35;
+        music.play().catch(() => {});
+      }
+
       setTimeout(() => {
         openingScreen.classList.add("hidden");
         siteContent.classList.add("show");
         body.classList.remove("locked");
-      }, 1950);
+      }, 2300);
     });
   </script>
 
