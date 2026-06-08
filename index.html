@@ -36,8 +36,6 @@
       --ink-soft: #52634c;
       --ink-muted: #71806a;
 
-      --line: rgba(47, 60, 43, 0.14);
-
       --thread-1: #fffef9;
       --thread-2: #e8eee0;
 
@@ -132,17 +130,11 @@
       align-items: center;
       justify-content: center;
       padding: 24px;
+      overflow: hidden;
       background:
         radial-gradient(ellipse at center, rgba(255,255,255,0.92) 0%, rgba(248,251,246,0.84) 32%, transparent 60%),
         radial-gradient(ellipse at 50% 75%, rgba(47,60,43,0.13), transparent 44%),
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.14) 0px,
-          rgba(255,255,255,0.14) 1px,
-          transparent 1px,
-          transparent 12px
-        ),
-        linear-gradient(180deg, #fbfdf8 0%, #e3ecdE 100%);
+        linear-gradient(180deg, #fbfdf8 0%, #e3ecde 100%);
       transition: opacity 1s ease, visibility 1s ease;
     }
 
@@ -152,7 +144,81 @@
       pointer-events: none;
     }
 
+    .opening-wallpaper {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255,255,255,0.78), transparent 22%),
+        radial-gradient(circle at 82% 78%, rgba(47,60,43,0.17), transparent 31%),
+        radial-gradient(circle at 70% 20%, rgba(130,150,111,0.14), transparent 28%),
+
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.28) 0%,
+          rgba(255,255,255,0.06) 42%,
+          rgba(47,60,43,0.06) 100%
+        ),
+
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,0.20) 0px,
+          rgba(255,255,255,0.20) 1px,
+          transparent 1px,
+          transparent 18px
+        ),
+
+        repeating-linear-gradient(
+          -45deg,
+          rgba(47,60,43,0.045) 0px,
+          rgba(47,60,43,0.045) 1px,
+          transparent 1px,
+          transparent 18px
+        ),
+
+        linear-gradient(
+          180deg,
+          #f8fbf4 0%,
+          #dfe9da 100%
+        );
+
+      transform: scale(1);
+      opacity: 1;
+      filter: blur(0px);
+      transition:
+        transform 1.7s ease,
+        opacity 1.4s ease,
+        filter 1.4s ease;
+    }
+
+    .opening-wallpaper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 40%, transparent 0%, rgba(47,60,43,0.06) 100%),
+        linear-gradient(90deg, rgba(255,255,255,0.08), transparent 45%, rgba(47,60,43,0.04));
+      pointer-events: none;
+    }
+
+    .opening-wallpaper::after {
+      content: "";
+      position: absolute;
+      inset: 34px;
+      border: 1px solid rgba(47,60,43,0.055);
+      box-shadow: inset 0 0 80px rgba(255,255,255,0.14);
+      pointer-events: none;
+    }
+
+    .opening-screen.opening .opening-wallpaper {
+      transform: scale(1.16) translateY(-18px);
+      opacity: 0;
+      filter: blur(8px);
+    }
+
     .opening-wrap {
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -842,6 +908,10 @@
     }
 
     @media (max-width: 600px) {
+      .opening-wallpaper::after {
+        inset: 18px;
+      }
+
       .opening-card {
         width: min(340px, 89vw);
         height: min(508px, 77vh);
@@ -897,6 +967,8 @@
   <audio id="weddingMusic" src="" loop></audio>
 
   <div class="opening-screen" id="openingScreen">
+    <div class="opening-wallpaper"></div>
+
     <div class="opening-wrap">
       <div class="opening-card" id="openingCard">
 
@@ -1034,6 +1106,7 @@
       if (openingCard.classList.contains("open")) return;
 
       openingCard.classList.add("open");
+      openingScreen.classList.add("opening");
 
       if (music && music.getAttribute("src")) {
         music.volume = 0.35;
