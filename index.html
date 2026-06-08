@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Debora & Kaique</title>
 
   <style>
@@ -15,66 +16,112 @@
     }
 
     :root {
-      --bg: #ece6dc;
-      --olive: #6d705b;
-      --olive-dark: #5c5f4d;
-      --olive-deep: #4f5343;
-      --paper: #f5efe6;
-      --paper-2: #efe6d9;
-      --paper-dark: #e6dac9;
-      --ink-light: #f7f4ef;
-      --ink-dark: #625f56;
-      --muted: #8a8579;
-      --line: rgba(255,255,255,0.78);
-      --thread: #e3ddd1;
-      --thread-shadow: rgba(80, 70, 55, 0.18);
-      --shadow: rgba(58, 44, 34, 0.18);
-      --shadow-strong: rgba(45, 35, 28, 0.26);
-      --wax-1: #b07a6c;
-      --wax-2: #8c5549;
-      --wax-3: #6d3d34;
+      --bg: #eee7dc;
+
+      --beige: #d8c7b3;
+      --beige-light: #efe3d3;
+      --beige-mid: #cdb9a2;
+      --beige-dark: #aa9278;
+
+      --paper: #f4eadc;
+      --paper-2: #eadcc9;
+      --paper-dark: #d7c3aa;
+
+      --ink-light: #fffaf3;
+      --ink-dark: #5f5042;
+      --muted: #8c7b68;
+
+      --thread: #f3eadc;
+      --thread-shadow: rgba(90, 70, 50, 0.18);
+
+      --shadow: rgba(70, 50, 35, 0.18);
+      --shadow-strong: rgba(55, 38, 26, 0.28);
+
+      --wax-1: #b78972;
+      --wax-2: #8d5f4b;
+      --wax-3: #6d4234;
     }
 
     body {
       font-family: 'Manrope', sans-serif;
       background:
-        radial-gradient(circle at top, rgba(255,255,255,0.45), transparent 30%),
-        linear-gradient(180deg, #efe9e0 0%, #e7e0d4 100%);
+        radial-gradient(circle at top, rgba(255,255,255,0.55), transparent 30%),
+        linear-gradient(180deg, #efe9df 0%, #e4d8c9 100%);
       color: var(--ink-dark);
       overflow-x: hidden;
     }
 
-    /* ====== texturas ====== */
     .paper-texture {
       background-color: var(--paper);
       background-image:
-        linear-gradient(135deg, rgba(255,255,255,0.38), rgba(255,255,255,0.02) 36%, rgba(0,0,0,0.04) 100%),
-        radial-gradient(rgba(112, 94, 74, 0.06) 0.6px, transparent 0.8px),
-        radial-gradient(rgba(255,255,255,0.28) 0.6px, transparent 0.8px),
+        linear-gradient(135deg, rgba(255,255,255,0.42), rgba(120,85,55,0.05)),
+
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,0.30) 0px,
+          rgba(255,255,255,0.30) 1px,
+          transparent 1px,
+          transparent 7px
+        ),
+
+        repeating-linear-gradient(
+          -45deg,
+          rgba(120,92,65,0.08) 0px,
+          rgba(120,92,65,0.08) 1px,
+          transparent 1px,
+          transparent 7px
+        ),
+
+        radial-gradient(
+          rgba(120,90,65,0.08) 0.6px,
+          transparent 0.8px
+        ),
+
         linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
-      background-size: auto, 7px 7px, 12px 12px, auto;
-      background-position: 0 0, 0 0, 3px 4px, 0 0;
+
+      background-size: auto, auto, auto, 8px 8px, auto;
+      background-blend-mode: soft-light, overlay, multiply, normal, normal;
     }
 
-    .olive-texture {
-      background-color: var(--olive);
+    .beige-texture {
+      background-color: var(--beige);
       background-image:
-        linear-gradient(145deg, rgba(255,255,255,0.06), rgba(0,0,0,0.08)),
-        radial-gradient(rgba(255,255,255,0.05) 0.6px, transparent 0.8px),
-        radial-gradient(rgba(0,0,0,0.05) 0.6px, transparent 0.8px),
-        linear-gradient(180deg, var(--olive) 0%, var(--olive-dark) 100%);
-      background-size: auto, 7px 7px, 11px 11px, auto;
-      background-position: 0 0, 0 0, 3px 4px, 0 0;
+        linear-gradient(145deg, rgba(255,255,255,0.32), rgba(120,85,55,0.11)),
+
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,0.24) 0px,
+          rgba(255,255,255,0.24) 1px,
+          transparent 1px,
+          transparent 8px
+        ),
+
+        repeating-linear-gradient(
+          -45deg,
+          rgba(118,85,58,0.10) 0px,
+          rgba(118,85,58,0.10) 1px,
+          transparent 1px,
+          transparent 8px
+        ),
+
+        radial-gradient(
+          circle at 30% 25%,
+          rgba(255,255,255,0.30) 0px,
+          transparent 35%
+        ),
+
+        linear-gradient(
+          180deg,
+          var(--beige-light) 0%,
+          var(--beige) 48%,
+          var(--beige-mid) 100%
+        );
+
+      background-blend-mode: soft-light, overlay, multiply, soft-light, normal;
     }
 
-    .deckle-shadow {
-      box-shadow:
-        0 30px 70px var(--shadow),
-        0 12px 20px rgba(0,0,0,0.06),
-        inset 0 0 0 1px rgba(255,255,255,0.08);
-    }
+    /* TELA DE ABERTURA */
 
-    /* ====== abertura ====== */
     .opening-screen {
       position: fixed;
       inset: 0;
@@ -83,6 +130,9 @@
       align-items: center;
       justify-content: center;
       padding: 22px;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.60), transparent 35%),
+        linear-gradient(180deg, #f1e9df 0%, #e0d0bf 100%);
       transition: opacity 1.1s ease, visibility 1.1s ease;
     }
 
@@ -98,9 +148,11 @@
       border-radius: 2px;
       overflow: hidden;
       cursor: pointer;
+      background: #d5c3ad;
+      box-shadow:
+        0 38px 85px var(--shadow-strong),
+        0 12px 24px rgba(70, 50, 35, 0.12);
       transition: transform 0.35s ease;
-      box-shadow: 0 35px 80px var(--shadow-strong);
-      background: #cfc7ba;
     }
 
     .opening-card:hover {
@@ -111,7 +163,8 @@
       cursor: default;
     }
 
-    /* conteúdo interno */
+    /* CONVITE INTERNO REVELADO */
+
     .invite-inside {
       position: absolute;
       inset: 0;
@@ -129,24 +182,23 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
-        linear-gradient(180deg, rgba(0,0,0,0.05), transparent 30%);
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02)),
+        linear-gradient(180deg, rgba(90,65,45,0.08), transparent 30%);
       pointer-events: none;
     }
 
-    .inside-paper {
+    .invite-inside::after {
+      content: "";
       position: absolute;
-      inset: 18px;
-      border-radius: 2px;
-      box-shadow:
-        inset 0 0 35px rgba(120, 100, 80, 0.05),
-        0 10px 30px rgba(0,0,0,0.06);
+      inset: 16px;
+      border: 1px solid rgba(255,255,255,0.22);
+      pointer-events: none;
     }
 
     .inside-content {
       position: relative;
       z-index: 2;
-      color: var(--ink-light);
+      color: #6a5645;
       padding: 20px;
       width: 100%;
     }
@@ -175,22 +227,33 @@
       opacity: 0.76;
     }
 
-    /* capa */
+    /* CAPA FECHADA */
+
     .cover {
       position: absolute;
       inset: 0;
       z-index: 8;
-      transition: transform 1.45s cubic-bezier(.77,0,.18,1), box-shadow 0.6s ease;
       overflow: hidden;
+      transition: transform 1.45s cubic-bezier(.77,0,.18,1), box-shadow 0.6s ease;
+    }
+
+    .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.20), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(90,60,35,0.18), transparent 36%);
+      pointer-events: none;
+      z-index: 1;
     }
 
     .cover::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(0,0,0,0.12), transparent 35%);
+      inset: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      z-index: 2;
       pointer-events: none;
     }
 
@@ -199,15 +262,16 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
 
-    /* folhas */
+    /* FOLHAS */
+
     .leaf {
       position: absolute;
       width: 180px;
       height: 180px;
-      opacity: 0.92;
+      opacity: 0.85;
       z-index: 2;
       pointer-events: none;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.05));
+      filter: drop-shadow(0 4px 8px rgba(80, 60, 40, 0.08));
     }
 
     .leaf.top-right {
@@ -221,15 +285,16 @@
       transform: rotate(180deg);
     }
 
-    /* barbante */
+    /* BARBANTE */
+
     .twine {
       position: absolute;
-      z-index: 3;
+      z-index: 4;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.85), rgba(210,204,194,0.95));
+        linear-gradient(180deg, rgba(255,255,255,0.92), rgba(214,204,190,0.96));
       box-shadow:
-        0 0 0 1px rgba(110,95,75,0.03),
-        0 2px 5px rgba(90, 76, 58, 0.12);
+        0 0 0 1px rgba(110,95,75,0.04),
+        0 2px 5px rgba(90, 76, 58, 0.16);
     }
 
     .twine.horizontal {
@@ -265,7 +330,8 @@
       transform: translateX(-50%) rotate(-24deg);
     }
 
-    /* selo de cera */
+    /* SELO DE CERA */
+
     .seal {
       position: absolute;
       top: 50%;
@@ -273,14 +339,14 @@
       width: 78px;
       height: 78px;
       transform: translate(-50%, -50%);
-      z-index: 4;
+      z-index: 5;
       border-radius: 48% 52% 49% 51% / 49% 47% 53% 51%;
       background:
         radial-gradient(circle at 32% 26%, var(--wax-1), var(--wax-2) 42%, var(--wax-3) 88%);
       box-shadow:
-        0 14px 25px rgba(62, 31, 27, 0.28),
-        inset 0 2px 4px rgba(255,255,255,0.12),
-        inset 0 -3px 5px rgba(0,0,0,0.18);
+        0 14px 25px rgba(62, 31, 27, 0.30),
+        inset 0 2px 4px rgba(255,255,255,0.14),
+        inset 0 -3px 5px rgba(0,0,0,0.20);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -297,8 +363,20 @@
       position: absolute;
       inset: 6px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.11);
       pointer-events: none;
+    }
+
+    .seal::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 9px;
+      background: rgba(255,255,255,0.10);
+      border-radius: 50%;
+      top: 15px;
+      left: 18px;
+      filter: blur(1px);
     }
 
     .opening-card:hover .seal {
@@ -310,7 +388,8 @@
       transform: translate(-50%, -50%) scale(0.84);
     }
 
-    /* conteúdo após abrir */
+    /* CONTEÚDO DO SITE */
+
     .site-content {
       opacity: 0;
       transform: translateY(28px);
@@ -331,9 +410,9 @@
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(rgba(95, 98, 80, 0.90), rgba(95, 98, 80, 0.92)),
-        radial-gradient(circle at top left, rgba(255,255,255,0.05), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(0,0,0,0.07), transparent 35%);
+        linear-gradient(rgba(215, 198, 176, 0.94), rgba(190, 166, 139, 0.96)),
+        radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(120,85,55,0.12), transparent 35%);
     }
 
     .hero::before {
@@ -341,11 +420,21 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(rgba(255,255,255,0.05) 0.7px, transparent 0.8px),
-        radial-gradient(rgba(0,0,0,0.04) 0.7px, transparent 0.8px);
-      background-size: 7px 7px, 11px 11px;
-      background-position: 0 0, 3px 4px;
-      opacity: 0.18;
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,0.14) 0px,
+          rgba(255,255,255,0.14) 1px,
+          transparent 1px,
+          transparent 8px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(110,80,55,0.07) 0px,
+          rgba(110,80,55,0.07) 1px,
+          transparent 1px,
+          transparent 8px
+        );
+      opacity: 0.42;
       pointer-events: none;
     }
 
@@ -355,10 +444,12 @@
       width: min(760px, 100%);
       padding: 54px 30px;
       text-align: center;
-      color: var(--ink-light);
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 22px 60px rgba(0,0,0,0.12);
+      color: #6a5645;
+      background: rgba(255,250,243,0.22);
+      border: 1px solid rgba(255,255,255,0.20);
+      box-shadow:
+        0 22px 60px rgba(80,55,35,0.12),
+        inset 0 0 40px rgba(255,255,255,0.06);
     }
 
     .hero-card .mini {
@@ -397,8 +488,9 @@
       position: absolute;
       width: 260px;
       height: 260px;
-      opacity: 0.62;
+      opacity: 0.50;
       pointer-events: none;
+      filter: drop-shadow(0 6px 10px rgba(80,60,40,0.08));
     }
 
     .hero-leaf.top-right {
@@ -415,7 +507,7 @@
     section {
       padding: 78px 22px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.05));
+        linear-gradient(180deg, rgba(255,255,255,0.20), rgba(255,255,255,0.05));
     }
 
     .section-card {
@@ -429,12 +521,22 @@
       border: 1px solid rgba(120, 103, 83, 0.08);
     }
 
+    .section-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(120, 92, 65, 0.10);
+      pointer-events: none;
+    }
+
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.2rem, 5vw, 3.2rem);
       font-weight: 400;
-      color: #5e5a52;
+      color: #5e5145;
       margin-bottom: 16px;
+      position: relative;
+      z-index: 2;
     }
 
     .section-text {
@@ -442,20 +544,24 @@
       margin: 0 auto;
       font-size: 0.98rem;
       line-height: 1.95;
-      color: #6f6a61;
+      color: #6f6255;
+      position: relative;
+      z-index: 2;
     }
 
     .date-box {
       max-width: 430px;
       margin: 28px auto 0;
       padding-top: 18px;
-      border-top: 1px solid rgba(100, 92, 78, 0.18);
+      border-top: 1px solid rgba(100, 82, 62, 0.18);
+      position: relative;
+      z-index: 2;
     }
 
     .date-box .big {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.1rem;
-      color: #5a574f;
+      color: #5a4e43;
       margin-bottom: 7px;
     }
 
@@ -463,7 +569,7 @@
       font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #8b867b;
+      color: #8b7b68;
     }
 
     .button {
@@ -474,23 +580,24 @@
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 3px;
-      color: #59564f;
-      border: 1px solid rgba(97, 99, 79, 0.22);
+      color: #5a4d42;
+      border: 1px solid rgba(97, 78, 58, 0.22);
       transition: all 0.3s ease;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.40), rgba(255,255,255,0.15)),
+        linear-gradient(135deg, rgba(255,255,255,0.42), rgba(255,255,255,0.15)),
         radial-gradient(rgba(112, 94, 74, 0.05) 0.6px, transparent 0.8px),
         linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
       background-size: auto, 7px 7px, auto;
       box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 2;
     }
 
     .button:hover {
       transform: translateY(-2px);
       background:
         linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05)),
-        radial-gradient(rgba(255,255,255,0.05) 0.6px, transparent 0.8px),
-        linear-gradient(180deg, var(--olive) 0%, var(--olive-dark) 100%);
+        linear-gradient(180deg, var(--beige-dark) 0%, #8f765f 100%);
       color: white;
       border-color: transparent;
       box-shadow: 0 12px 24px rgba(0,0,0,0.10);
@@ -499,7 +606,7 @@
     footer {
       padding: 26px 20px 40px;
       text-align: center;
-      color: #898479;
+      color: #8b7d6e;
       font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -538,38 +645,38 @@
     }
   </style>
 </head>
+
 <body>
 
-  <!-- ABERTURA -->
+  <!-- ABERTURA DO CONVITE -->
   <div class="opening-screen" id="openingScreen">
     <div class="opening-card" id="openingCard">
 
       <!-- PARTE INTERNA REVELADA -->
-      <div class="invite-inside olive-texture">
-        <div class="inside-paper"></div>
+      <div class="invite-inside beige-texture">
 
         <svg class="leaf top-right" viewBox="0 0 200 200" fill="none">
-          <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,255,255,0.72)" stroke-width="2.2" stroke-linecap="round"/>
-          <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,255,255,0.70)"/>
+          <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,250,240,0.72)" stroke-width="2.2" stroke-linecap="round"/>
+          <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,250,240,0.68)"/>
         </svg>
 
         <svg class="leaf bottom-left" viewBox="0 0 200 200" fill="none">
-          <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,255,255,0.72)" stroke-width="2.2" stroke-linecap="round"/>
-          <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,255,255,0.70)"/>
+          <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,250,240,0.72)" stroke-width="2.2" stroke-linecap="round"/>
+          <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,250,240,0.68)"/>
         </svg>
 
         <div class="inside-content">
@@ -580,29 +687,30 @@
       </div>
 
       <!-- CAPA FECHADA -->
-      <div class="cover olive-texture">
+      <div class="cover beige-texture">
+
         <svg class="leaf top-right" viewBox="0 0 200 200" fill="none">
-          <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,255,255,0.72)" stroke-width="2.2" stroke-linecap="round"/>
-          <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,255,255,0.70)"/>
+          <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,250,240,0.72)" stroke-width="2.2" stroke-linecap="round"/>
+          <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,250,240,0.68)"/>
         </svg>
 
         <svg class="leaf bottom-left" viewBox="0 0 200 200" fill="none">
-          <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,255,255,0.72)" stroke-width="2.2" stroke-linecap="round"/>
-          <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,255,255,0.70)"/>
-          <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,255,255,0.70)"/>
+          <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,250,240,0.72)" stroke-width="2.2" stroke-linecap="round"/>
+          <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,250,240,0.68)"/>
+          <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,250,240,0.68)"/>
         </svg>
 
         <div class="twine horizontal"></div>
@@ -612,41 +720,44 @@
 
         <div class="seal">KD</div>
       </div>
+
     </div>
   </div>
 
-  <!-- CONTEÚDO -->
+  <!-- CONTEÚDO DO CONVITE -->
   <main class="site-content" id="siteContent">
 
     <section class="hero">
+
       <svg class="hero-leaf top-right" viewBox="0 0 200 200" fill="none">
-        <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,255,255,0.70)" stroke-width="2.2" stroke-linecap="round"/>
-        <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,255,255,0.68)"/>
+        <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,250,240,0.58)" stroke-width="2.2" stroke-linecap="round"/>
+        <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,250,240,0.52)"/>
       </svg>
 
       <svg class="hero-leaf bottom-left" viewBox="0 0 200 200" fill="none">
-        <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,255,255,0.70)" stroke-width="2.2" stroke-linecap="round"/>
-        <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,255,255,0.68)"/>
-        <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,255,255,0.68)"/>
+        <path d="M94 8 C102 44, 104 74, 100 192" stroke="rgba(255,250,240,0.58)" stroke-width="2.2" stroke-linecap="round"/>
+        <ellipse cx="122" cy="28" rx="13" ry="30" transform="rotate(34 122 28)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="140" cy="52" rx="12" ry="27" transform="rotate(30 140 52)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="144" cy="86" rx="12" ry="28" transform="rotate(25 144 86)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="132" cy="118" rx="12" ry="28" transform="rotate(22 132 118)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="116" cy="148" rx="12" ry="27" transform="rotate(16 116 148)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="77" cy="40" rx="12" ry="27" transform="rotate(-32 77 40)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="64" cy="72" rx="12" ry="28" transform="rotate(-24 64 72)" fill="rgba(255,250,240,0.52)"/>
+        <ellipse cx="58" cy="106" rx="12" ry="28" transform="rotate(-16 58 106)" fill="rgba(255,250,240,0.52)"/>
       </svg>
 
       <div class="hero-card">
         <div class="mini">Convite de casamento</div>
         <h1>Debora & Kaique</h1>
         <div class="hero-date">20 Outubro 2027</div>
+
         <p class="hero-text">
           Com alegria, convidamos você para celebrar conosco este momento tão especial.
           Esperamos compartilhar esse dia inesquecível ao lado das pessoas que amamos.
@@ -657,6 +768,7 @@
     <section>
       <div class="section-card paper-texture">
         <h2 class="section-title">Nosso grande dia</h2>
+
         <p class="section-text">
           Será uma honra ter a sua presença conosco para celebrar a nossa união.
         </p>
@@ -671,29 +783,36 @@
     <section>
       <div class="section-card paper-texture">
         <h2 class="section-title">Local</h2>
+
         <p class="section-text">
           Nome do local do evento<br>
           Endereço completo aqui
         </p>
 
-        <a class="button" href="https://maps.google.com" target="_blank">Ver localização</a>
+        <a class="button" href="https://maps.google.com" target="_blank">
+          Ver localização
+        </a>
       </div>
     </section>
 
     <section>
       <div class="section-card paper-texture">
         <h2 class="section-title">Confirmação de presença</h2>
+
         <p class="section-text">
           Pedimos, por gentileza, que confirme sua presença até a data combinada.
         </p>
 
-        <a class="button" href="https://forms.google.com" target="_blank">Confirmar presença</a>
+        <a class="button" href="https://forms.google.com" target="_blank">
+          Confirmar presença
+        </a>
       </div>
     </section>
 
     <section>
       <div class="section-card paper-texture">
         <h2 class="section-title">Dress code</h2>
+
         <p class="section-text">
           Traje social elegante.
         </p>
@@ -703,6 +822,7 @@
     <footer>
       Debora & Kaique
     </footer>
+
   </main>
 
   <script>
@@ -721,5 +841,6 @@
       }, 1750);
     });
   </script>
+
 </body>
 </html>
