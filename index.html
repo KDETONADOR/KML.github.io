@@ -17,7 +17,7 @@
 
     :root {
       --bg-1: #fff9fa;
-      --bg-2: #f2dfe5;
+      --bg-2: #f1dfe4;
 
       --pink-1: #fae8ec;
       --pink-2: #edced5;
@@ -58,7 +58,7 @@
 
     .paper-surface {
       background:
-        linear-gradient(140deg, rgba(255,255,255,0.62), rgba(160, 92, 108, 0.035)),
+        linear-gradient(140deg, rgba(255,255,255,0.66), rgba(160, 92, 108, 0.035)),
         repeating-linear-gradient(
           45deg,
           rgba(255,255,255,0.24) 0px,
@@ -74,7 +74,7 @@
           transparent 8px
         ),
         radial-gradient(
-          rgba(120,70,85,0.04) 0.7px,
+          rgba(120,70,85,0.045) 0.7px,
           transparent 0.9px
         ),
         linear-gradient(180deg, var(--paper-1) 0%, var(--paper-2) 100%);
@@ -124,7 +124,7 @@
       justify-content: center;
       padding: 24px;
       background:
-        radial-gradient(ellipse at center, rgba(255,255,255,0.86) 0%, rgba(255,248,250,0.78) 30%, transparent 58%),
+        radial-gradient(ellipse at center, rgba(255,255,255,0.88) 0%, rgba(255,248,250,0.80) 30%, transparent 58%),
         radial-gradient(ellipse at 50% 75%, rgba(105,65,78,0.12), transparent 44%),
         repeating-linear-gradient(
           90deg,
@@ -287,8 +287,7 @@
       overflow: hidden;
       transform-origin: center bottom;
       transition:
-        transform 1.55s cubic-bezier(.77,0,.18,1) 0.65s,
-        opacity 0.8s ease,
+        transform 1.65s cubic-bezier(.77,0,.18,1) 0.65s,
         filter 1.2s ease;
       will-change: transform;
     }
@@ -314,11 +313,9 @@
     }
 
     .opening-card.open .cover {
-      transform: perspective(1400px) rotateX(18deg) translateY(-116%);
+      transform: perspective(1400px) rotateX(18deg) translateY(-116%) scale(0.985);
       filter: drop-shadow(0 12px 18px rgba(70,40,48,0.10));
     }
-
-    /* BARBANTE */
 
     .twine {
       position: absolute;
@@ -409,8 +406,6 @@
     .opening-card.open .twine.diag-right {
       transform: translateX(-50%) rotate(-24deg) scaleY(0.72);
     }
-
-    /* LACRE */
 
     .seal {
       position: absolute;
@@ -552,7 +547,7 @@
       position: relative;
       z-index: 2;
       width: min(760px, 100%);
-      padding: 62px 32px;
+      padding: 62px 32px 76px;
       text-align: center;
       color: var(--ink);
       background: rgba(255,255,255,0.58);
@@ -575,12 +570,13 @@
       }
     }
 
-    .hero-card .mini {
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      opacity: 0.72;
+    .hero-monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      letter-spacing: 8px;
+      opacity: 0.56;
       margin-bottom: 18px;
+      transform: translateX(4px);
     }
 
     .hero-card h1 {
@@ -596,6 +592,37 @@
       letter-spacing: 4px;
       text-transform: uppercase;
       opacity: 0.82;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9b7b84;
+      opacity: 0.72;
+      animation: floatCue 1.8s ease-in-out infinite;
+    }
+
+    .scroll-cue::after {
+      content: "⌄";
+      display: block;
+      font-size: 22px;
+      line-height: 1;
+      margin-top: 4px;
+      letter-spacing: 0;
+    }
+
+    @keyframes floatCue {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(7px);
+      }
     }
 
     section {
@@ -712,17 +739,12 @@
       box-shadow: 0 12px 24px rgba(95,55,65,0.10);
     }
 
-    .floating-rsvp {
+    .floating-rsvp,
+    .music-toggle {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
       z-index: 50;
-      padding: 12px 18px;
       border-radius: 999px;
       text-decoration: none;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
       color: #6b4f55;
       background: rgba(255,255,255,0.72);
       border: 1px solid rgba(130,80,90,0.14);
@@ -731,10 +753,30 @@
       opacity: 0;
       transform: translateY(12px);
       pointer-events: none;
-      transition: opacity 0.8s ease 1.2s, transform 0.8s ease 1.2s;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    .site-content.show .floating-rsvp {
+    .floating-rsvp {
+      right: 18px;
+      bottom: 18px;
+      padding: 12px 18px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .music-toggle {
+      left: 18px;
+      bottom: 18px;
+      width: 42px;
+      height: 42px;
+      border: none;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .floating-rsvp.visible,
+    .music-toggle.visible {
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
@@ -774,6 +816,10 @@
         padding: 38px 22px;
       }
 
+      .hero-card {
+        padding-bottom: 70px;
+      }
+
       .hero-card h1 {
         font-size: clamp(3.3rem, 15vw, 4.7rem);
       }
@@ -784,8 +830,13 @@
         bottom: 14px;
       }
 
-      .site-content.show .floating-rsvp {
+      .floating-rsvp.visible {
         transform: translate(50%, 0);
+      }
+
+      .music-toggle {
+        left: 14px;
+        bottom: 14px;
       }
     }
   </style>
@@ -793,6 +844,7 @@
 
 <body class="locked">
 
+  <!-- Depois, para ativar música, coloque um arquivo music.mp3 no repositório e mude src para "music.mp3" -->
   <audio id="weddingMusic" src="" loop></audio>
 
   <div class="opening-screen" id="openingScreen">
@@ -803,7 +855,7 @@
           <div class="inside-paper paper-surface"></div>
 
           <div class="inside-content">
-            <div class="inside-eyebrow">Convite de casamento</div>
+            <div class="inside-eyebrow">Debora & Kaique</div>
             <h1>Debora & Kaique</h1>
             <div class="inside-date">20 de Outubro de 2027</div>
           </div>
@@ -831,15 +883,18 @@
 
   <main class="site-content" id="siteContent">
 
-    <a class="floating-rsvp" href="https://forms.google.com" target="_blank">
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Controlar música">♪</button>
+
+    <a class="floating-rsvp" id="floatingRsvp" href="https://forms.google.com" target="_blank">
       Confirmar presença
     </a>
 
     <section class="hero">
       <div class="hero-card">
-        <div class="mini">Convite de casamento</div>
+        <div class="hero-monogram">D & K</div>
         <h1>Debora & Kaique</h1>
         <div class="hero-date">20 de Outubro de 2027</div>
+        <div class="scroll-cue">deslize para ver os detalhes</div>
       </div>
     </section>
 
@@ -923,6 +978,8 @@
     const openingScreen = document.getElementById("openingScreen");
     const siteContent = document.getElementById("siteContent");
     const music = document.getElementById("weddingMusic");
+    const musicToggle = document.getElementById("musicToggle");
+    const floatingRsvp = document.getElementById("floatingRsvp");
 
     openingCard.addEventListener("click", () => {
       if (openingCard.classList.contains("open")) return;
@@ -941,6 +998,18 @@
       }, 2300);
     });
 
+    musicToggle.addEventListener("click", () => {
+      if (!music || !music.getAttribute("src")) return;
+
+      if (music.paused) {
+        music.play().catch(() => {});
+        musicToggle.textContent = "♪";
+      } else {
+        music.pause();
+        musicToggle.textContent = "×";
+      }
+    });
+
     const revealElements = document.querySelectorAll(".reveal");
 
     const observer = new IntersectionObserver((entries) => {
@@ -954,6 +1023,16 @@
     });
 
     revealElements.forEach((el) => observer.observe(el));
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 350) {
+        floatingRsvp.classList.add("visible");
+        musicToggle.classList.add("visible");
+      } else {
+        floatingRsvp.classList.remove("visible");
+        musicToggle.classList.remove("visible");
+      }
+    });
   </script>
 
 </body>
